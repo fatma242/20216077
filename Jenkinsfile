@@ -11,7 +11,15 @@ pipeline {
         }
         stage('Execute Script') { 
             steps {
-                sh './script.sh'
+                script {
+                    if (isUnix()) {
+                        // If on a Unix-like OS (Linux/macOS), use sh to execute the script
+                        sh './script.sh'
+                    } else {
+                        // If on Windows, use Git Bash to run the script
+                        bat 'bash script.sh'
+                    }
+                }
             }
         }
     }
