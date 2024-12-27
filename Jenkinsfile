@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone Repository') { 
             steps {
-                git branch: 'main', url: https://github.com/fatma242/20216077
+                git(url: 'https://github.com/fatma242/20216077', branch: 'main')
             }
         }
         stage('Execute Script') { 
