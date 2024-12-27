@@ -13,11 +13,12 @@ pipeline {
             steps {
                 script {
                     if (isUnix()) {
-                        // If on a Unix-like OS (Linux/macOS), use sh to execute the script
+                        // On Unix-like OS (Linux/macOS), use sh to execute the script
                         sh './script.sh'
                     } else {
-                        // If on Windows, use Git Bash to run the script
-                        bat 'bash script.sh'
+                        // On Windows, use Git Bash (bash.exe) to run the script
+                        // Ensure that the full path to bash.exe is correct, or Git Bash is in PATH
+                        bat '"C:\\Program Files\\Git\\bin\\bash.exe" script.sh'
                     }
                 }
             }
